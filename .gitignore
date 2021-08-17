@@ -50,3 +50,12 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+ ./*.IAB
+304Xv265/v265.IAD
+ *.IMB
+        v265.IMD
+        *.PFI
+        *.PO
+        *.PR
+        *.PRI
+        *.PS

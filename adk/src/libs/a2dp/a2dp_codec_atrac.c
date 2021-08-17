@@ -16,7 +16,7 @@ NOTES
     Header files
 */
 #include "a2dp.h"
-
+   
 #ifdef INCLUDE_ATRAC
 #include "a2dp_private.h"
 #include "a2dp_caps_parse.h"
