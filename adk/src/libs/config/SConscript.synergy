@@ -1,0 +1,19 @@
+Import('p_env')
+
+if p_env.get('LIBTYPE', '') == 'synergy':
+    p_env.Append(CONFIG_FEATURES = ['CONFIG_SYNERGY'])
+    p_env.Append(CONFIG_DIRS_FILTER = """
+      connection gatt a2dp hfp avrcp gatt_client gatt_server gatt_manager
+      gatt_ascs_server gatt_aics_client gatt_bass_client gatt_bass_server
+      gatt_csis_server gatt_pacs_server gatt_telephone_bearer_server
+      gatt_vcs_client gatt_vcs_server gatt_service_discovery
+      gatt_vocs_client vcp""".split())
+    SYNERGY_LIBS = """
+      a2dp_synergy connection_synergy hfp_synergy avrcp_synergy
+      gatt_synergy gatt_client_synergy gatt_server_synergy
+      gatt_manager_synergy""".split()
+    for lib in SYNERGY_LIBS:
+        try:
+            p_env['CONFIG_DIRS_FILTER'].remove(lib)
+        except:
+            pass

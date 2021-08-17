@@ -1,0 +1,33 @@
+@startuml
+
+
+state HANDSET_SERVICE_MP_SM{
+    state IDLE : No connection 
+    state GET_DEVICE : Get handset device to connect
+    state GET_NEXT_DEVICE : Get next handset device to connect
+
+    [*] -down-> IDLE : No device
+
+    IDLE -down--> GET_DEVICE : HandsetServiceMultipointSm_ReconnectRequest()
+
+    state c <<choice>>
+    GET_DEVICE -down-> c
+    c -up-> IDLE : [DEVICE_FOUND = FALSE]
+
+    state d <<choice>>
+    GET_NEXT_DEVICE -down-> d
+    d -> GET_DEVICE : [MAX_DEVICE_REACHED = FALSE && \n DEVICE_FOUND = TRUE]
+    d -> IDLE : [MAX_DEVICE_REACHED = TRUE]
+}
+state HANDSET_SERVICE_SM {
+    state DISCONNECTED : Handset not connected
+    state CONNECTING : Pseudo-state for connecting sub-states.
+    
+    c -down--> DISCONNECTED : [DEVICE_FOUND = TRUE]\nHandsetService_ConnectAddressRequest()
+    state CONNECTING {
+        state CONNECTING_ACL : ACL connecting
+        
+        CONNECTING_ACL --> GET_NEXT_DEVICE : ACL connected
+    }
+}
+@enduml

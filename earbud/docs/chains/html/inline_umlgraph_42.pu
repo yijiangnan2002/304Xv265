@@ -1,0 +1,17 @@
+@startuml
+
+        object OPR_MIC_GAIN
+        OPR_MIC_GAIN : id = CAP_ID_BASIC_PASS
+        object OPR_CVC_SEND
+        OPR_CVC_SEND : id = EB_CAP_ID_CVC_VA_2MIC
+        OPR_CVC_SEND "MIC1_IN(1)"<-- "MIC1_OUT(0)" OPR_MIC_GAIN
+        OPR_CVC_SEND "MIC2_IN(2)"<-- "MIC2_OUT(1)" OPR_MIC_GAIN
+        object EPR_VA_MIC_AEC_IN #lightgreen
+        OPR_CVC_SEND "AEC_IN(0)" <-- EPR_VA_MIC_AEC_IN
+        object EPR_VA_MIC_MIC1_IN #lightgreen
+        OPR_MIC_GAIN "MIC1_IN(0)" <-- EPR_VA_MIC_MIC1_IN
+        object EPR_VA_MIC_MIC2_IN #lightgreen
+        OPR_MIC_GAIN "MIC2_IN(1)" <-- EPR_VA_MIC_MIC2_IN
+        object EPR_VA_MIC_ENCODE_OUT #lightblue
+        EPR_VA_MIC_ENCODE_OUT <-- "OUT(CVC_2MIC_VA_OUTPUT_TERMINAL)" OPR_CVC_SEND
+    @enduml

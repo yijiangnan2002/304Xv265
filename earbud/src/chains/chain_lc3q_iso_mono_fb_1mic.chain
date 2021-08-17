@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright (c) 2021 Qualcomm Technologies International, Ltd.-->
+<!--Chain for 1 mic FB LC3Q encoder LE Mic only channel-->
+
+<chain name="CHAIN_LC3Q_ISO_MONO_FB_1MIC" id="1" generate_operator_roles_enum="False" generate_endpoint_roles_enum="False">
+
+    <include_header name="../earbud_cap_ids.h"/>
+    <include_header name="kymera_chain_roles.h"/>
+    
+    <operator name="OPR_BASIC_PASS" id="CAP_ID_BASIC_PASS">
+        <sink name="AEC_MIC_IN" terminal="0"/>
+        <source name="OUT" terminal="0"/>
+    </operator>
+
+    <operator name="OPR_RATE_ADJUST" id="CAP_ID_RATE_ADJUST">
+        <sink name="IN" terminal="0"/>
+        <source name="OUT" terminal="0"/>
+    </operator>
+	
+	<operator name="OPR_LC3Q_ENCODE_SCO_ISO" id="EB_CAP_ID_LC3Q_ENCODE_SCO_ISO">
+        <sink name="IN" terminal="0"/>
+        <source name="OUT" terminal="0"/>
+    </operator>
+	
+	<input sink="OPR_BASIC_PASS.AEC_MIC_IN" role="EPR_MIC_MIC1_IN"/>
+	<connection source="OPR_BASIC_PASS.OUT" sink="OPR_RATE_ADJUST.IN"/>
+    <connection source="OPR_RATE_ADJUST.OUT" sink="OPR_LC3Q_ENCODE_SCO_ISO.IN"/>
+    <output source="OPR_LC3Q_ENCODE_SCO_ISO.OUT" role="EPR_LC3Q_ENCODE_ISO_TO_AIR"/>
+
+</chain>

@@ -1,0 +1,13 @@
+@startuml
+
+        object OPR_FIT_TEST_BASIC_PT
+        OPR_FIT_TEST_BASIC_PT : id = CAP_ID_BASIC_PASS
+        object OPR_FIT_TEST
+        OPR_FIT_TEST : id = EB_CAP_ID_EARBUD_FIT_TEST
+        OPR_FIT_TEST "PLAYBACK_IN(0)"<-- "OUTPUT1(0)" OPR_FIT_TEST_BASIC_PT
+        OPR_FIT_TEST "INT_MIC_IN(1)"<-- "OUTPUT2(1)" OPR_FIT_TEST_BASIC_PT
+        object EPR_FIT_TEST_PLAYBACK_IN #lightgreen
+        OPR_FIT_TEST_BASIC_PT "INPUT1(0)" <-- EPR_FIT_TEST_PLAYBACK_IN
+        object EPR_FIT_TEST_INT_MIC_IN #lightgreen
+        OPR_FIT_TEST_BASIC_PT "INPUT2(1)" <-- EPR_FIT_TEST_INT_MIC_IN
+    @enduml

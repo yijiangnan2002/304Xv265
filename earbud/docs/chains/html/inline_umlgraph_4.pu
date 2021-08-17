@@ -1,0 +1,19 @@
+@startuml
+
+        object OPR_AANC_FBC_FF_MIC_PATH
+        OPR_AANC_FBC_FF_MIC_PATH : id = EB_CAP_ID_CVC_FBC
+        object OPR_AANC_FBC_ERR_MIC_PATH
+        OPR_AANC_FBC_ERR_MIC_PATH : id = EB_CAP_ID_CVC_FBC
+        object EPR_AANC_FBC_FF_MIC_REF_IN #lightgreen
+        OPR_AANC_FBC_FF_MIC_PATH "REF_IN(0)" <-- EPR_AANC_FBC_FF_MIC_REF_IN
+        object EPR_AANC_FBC_FF_MIC_IN #lightgreen
+        OPR_AANC_FBC_FF_MIC_PATH "MIC_IN(1)" <-- EPR_AANC_FBC_FF_MIC_IN
+        object EPR_AANC_FBC_ERR_MIC_REF_IN #lightgreen
+        OPR_AANC_FBC_ERR_MIC_PATH "REF_IN(0)" <-- EPR_AANC_FBC_ERR_MIC_REF_IN
+        object EPR_AANC_FBC_ERR_MIC_IN #lightgreen
+        OPR_AANC_FBC_ERR_MIC_PATH "MIC_IN(1)" <-- EPR_AANC_FBC_ERR_MIC_IN
+        object EPR_AANC_FBC_FF_MIC_OUT #lightblue
+        EPR_AANC_FBC_FF_MIC_OUT <-- "MIC_OUT(0)" OPR_AANC_FBC_FF_MIC_PATH
+        object EPR_AANC_FBC_ERR_MIC_OUT #lightblue
+        EPR_AANC_FBC_ERR_MIC_OUT <-- "MIC_OUT(0)" OPR_AANC_FBC_ERR_MIC_PATH
+    @enduml

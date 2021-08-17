@@ -1,0 +1,11 @@
+@startuml
+
+        object OPR_AANC_SPLT_MIC_REF_PATH
+        OPR_AANC_SPLT_MIC_REF_PATH : id = CAP_ID_SPLITTER
+        object EPR_SPLT_MIC_REF_IN #lightgreen
+        OPR_AANC_SPLT_MIC_REF_PATH "IN(0)" <-- EPR_SPLT_MIC_REF_IN
+        object EPR_SPLT_MIC_REF_OUT1 #lightblue
+        EPR_SPLT_MIC_REF_OUT1 <-- "OUT1(0)" OPR_AANC_SPLT_MIC_REF_PATH
+        object EPR_SPLT_MIC_REF_OUT2 #lightblue
+        EPR_SPLT_MIC_REF_OUT2 <-- "OUT2(1)" OPR_AANC_SPLT_MIC_REF_PATH
+    @enduml
