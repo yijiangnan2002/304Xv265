@@ -45,17 +45,20 @@ const led_manager_hw_config_t earbud_led_config =
 #define LED_2_STATE  (1 << 0)
 #endif
 
-#define LED_GREEN   (LED_1_STATE)
+#define LED_GREEN   (LED_0_STATE)
 #ifdef CORVUS_YD300
 #define LED_BLUE    (LED_2_STATE)
 #define LED_RED     (LED_0_STATE)
 #else
-#define LED_BLUE    (LED_0_STATE)
-#define LED_RED     (LED_2_STATE)
+#define LED_BLUE    (LED_1_STATE)
+#define LED_RED     LED_BLUE
 #endif
 
-#define LED_WHITE   (LED_0_STATE | LED_1_STATE | LED_2_STATE)
-#define LED_YELLOW  (LED_RED | LED_GREEN)
+#define LED_WHITE   LED_BLUE
+#define LED_YELLOW  LED_WHITE
+
+//#define LED_WHITE   (LED_0_STATE | LED_1_STATE | LED_2_STATE)
+//#define LED_YELLOW  (LED_RED | LED_GREEN)
 /*!@} */
 
 #ifndef HAVE_RDP_UI
@@ -181,12 +184,10 @@ const led_pattern_t app_led_pattern_charging_ok[] =
 const led_pattern_t app_led_pattern_power_on[] =
 {
     LED_LOCK,
-    LED_ON(LED_RED),    LED_WAIT(100),
-    LED_ON(LED_GREEN),  LED_WAIT(100),
-    LED_ON(LED_BLUE),   LED_WAIT(100),
-    LED_OFF(LED_RED),   LED_WAIT(100),
-    LED_OFF(LED_GREEN), LED_WAIT(100),
-    LED_OFF(LED_BLUE),  LED_WAIT(100),
+    LED_ON(LED_WHITE),    LED_WAIT(100),LED_OFF(LED_WHITE),
+    LED_ON(LED_GREEN),    LED_WAIT(100),LED_OFF(LED_GREEN),
+    LED_ON(LED_WHITE),    LED_WAIT(100),LED_OFF(LED_WHITE),
+    LED_ON(LED_GREEN),    LED_WAIT(100),LED_OFF(LED_GREEN),
     LED_UNLOCK,
     LED_END
 };
@@ -233,7 +234,8 @@ const led_pattern_t app_led_pattern_pairing[] =
 #ifdef HAVE_RDP_UI
     LED_ON(LED_BLUE), LED_WAIT(100), LED_OFF(LED_BLUE), LED_WAIT(100),
 #else
-    LED_ON(LED_RED), LED_WAIT(100), LED_OFF(LED_RED), LED_WAIT(100),
+    LED_ON(LED_WHITE),    LED_WAIT(100),LED_OFF(LED_WHITE),
+    LED_ON(LED_GREEN),    LED_WAIT(100),LED_OFF(LED_GREEN),
 #endif
     LED_UNLOCK,
     LED_REPEAT(0, 0)

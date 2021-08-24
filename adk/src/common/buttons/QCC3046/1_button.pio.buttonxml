@@ -14,4 +14,9 @@
         <pad>0</pad>
     </pio>
 
+    <pio>
+        <pinFriendlyName>MFB</pinFriendlyName>
+        <pad>2</pad>
+    </pio>
+
 </pio_map>

@@ -22,6 +22,8 @@
 #include <panic.h>
 #include <stdlib.h>
 #include <vmtypes.h>
+#include "1_button.h"
+#include <multidevice.h>
 
 /* The full range of logical inputs are split across two different message
  * groups, one of which is used to identify device specific messages. */
@@ -147,6 +149,16 @@ static void logicalInputSwitch_HandleMessage(Task task, MessageId id, Message me
         if (logicalInputSwitch_IsValidLogicalInput(id))
         {
             ui_input_t passthrough_ui_input = logicalInputSwitch_PassthroughUiInput(id, (PASSTHROUGH_LOGICAL_INPUT_MSG_T*)message);
+
+		 if(id == APP_MFB_BUTTON_TRIPLE_CLICK&& passthrough_ui_input == ui_input_invalid&&Multidevice_IsLeft())
+		 {
+		    id = APP_MFB_BUTTON_LEFT_TRIPLE_CLICK;
+		 }
+
+		 if(id == APP_MFB_BUTTON_DOUBLE_CLICK&& passthrough_ui_input == ui_input_invalid&&Multidevice_IsLeft())
+		 {
+		    id = APP_MFB_BUTTON_LEFT_DOUBLE_CLICK;
+		 }
 
             if (reroute_logical_inputs_to_peer &&
                 !logicalInputSwitch_IsDeviceSpecificLogicalInput(id))

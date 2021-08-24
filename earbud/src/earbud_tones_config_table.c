@@ -190,6 +190,12 @@ const ui_event_indicator_table_t earbud_ui_tones_table[] =
                                                                  .tone.button_feedback = TRUE },
                                                                  .await_indication_completion = TRUE },
 #endif
+
+    {.sys_event=PAIRING_COMPLETE,                      { .tone.tone = app_tone_button,
+                                                                 .tone.queueable = TRUE,
+                                                                 .tone.interruptible = FALSE,
+                                                                 .tone.button_feedback = TRUE }},
+
 };
 
 /*! \ingroup configuration

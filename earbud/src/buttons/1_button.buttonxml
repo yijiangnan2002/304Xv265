@@ -24,6 +24,20 @@
             <count>3</count>
         </message>
 
+        <message>
+           <messageName>APP_MFB_BUTTON_LEFT_TRIPLE_CLICK</messageName>
+           <buttonEvent>HELD_RELEASE</buttonEvent>
+           <activePinFriendlyName>MFB</activePinFriendlyName>
+           <timeout_ms>10000</timeout_ms>
+        </message>
+
+        <message>
+           <messageName>APP_MFB_BUTTON_LEFT_DOUBLE_CLICK</messageName>
+           <buttonEvent>HELD_RELEASE</buttonEvent>
+           <activePinFriendlyName>MFB</activePinFriendlyName>
+           <timeout_ms>9000</timeout_ms>
+        </message>
+
        <message>
             <messageName>APP_ANC_TOGGLE_ON_OFF</messageName>
             <buttonEvent>HELD_RELEASE</buttonEvent>

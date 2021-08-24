@@ -349,8 +349,10 @@ const ui_config_table_content_t earbud_ui_config_table[] =
     {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_telephony,       context_voice_ringing_incoming,       ui_input_voice_call_accept                    },
     {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_media_player,    context_media_player_streaming,       ui_input_toggle_play_pause                    },
     {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_media_player,    context_media_player_idle,            ui_input_toggle_play_pause                    },
+    {APP_MFB_BUTTON_LEFT_DOUBLE_CLICK,      ui_provider_media_player,    context_media_player_idle,            ui_input_toggle_play_pause                    },
     {APP_MFB_BUTTON_HELD_1SEC,      ui_provider_telephony,       context_voice_ringing_incoming,       ui_input_voice_call_reject                    },
     {APP_MFB_BUTTON_TRIPLE_CLICK,              ui_provider_media_player,    context_media_player_streaming,       ui_input_av_forward                           },
+    {APP_MFB_BUTTON_LEFT_TRIPLE_CLICK,              ui_provider_media_player,    context_media_player_streaming,       ui_input_av_backward                           },
 
 #else
     {APP_LEAKTHROUGH_TOGGLE_ON_OFF,    ui_provider_audio_curation,  context_leakthrough_disabled,         ui_input_leakthrough_toggle_on_off            },
