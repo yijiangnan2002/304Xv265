@@ -6,6 +6,25 @@
     <message_group name="media_message_group">
 
         <message>
+            <messageName>APP_MFB_BUTTON_SINGLE_CLICK</messageName>
+            <buttonEvent>SINGLE_CLICK</buttonEvent>
+            <activePinFriendlyName>SYS_CTRL</activePinFriendlyName>
+        </message>
+
+         <message>
+            <messageName>APP_MFB_BUTTON_DOUBLE_CLICK</messageName>
+            <buttonEvent>DOUBLE_CLICK</buttonEvent>
+            <activePinFriendlyName>SYS_CTRL</activePinFriendlyName>
+        </message>
+
+         <message>
+            <messageName>APP_MFB_BUTTON_TRIPLE_CLICK</messageName>
+            <buttonEvent>MULTI_CLICK</buttonEvent>
+            <activePinFriendlyName>SYS_CTRL</activePinFriendlyName>
+            <count>3</count>
+        </message>
+
+       <message>
             <messageName>APP_ANC_TOGGLE_ON_OFF</messageName>
             <buttonEvent>HELD_RELEASE</buttonEvent>
             <activePinFriendlyName>SYS_CTRL</activePinFriendlyName>
@@ -27,12 +46,6 @@
         <message>
             <messageName>APP_ANC_DISABLE</messageName>
             <buttonEvent>IGNORE</buttonEvent>
-        </message>
-
-        <message>
-            <messageName>APP_MFB_BUTTON_SINGLE_CLICK</messageName>
-            <buttonEvent>SINGLE_CLICK</buttonEvent>
-            <activePinFriendlyName>SYS_CTRL</activePinFriendlyName>
         </message>
 
         <message>
@@ -312,12 +325,6 @@
             <buttonEvent>HELD_RELEASE</buttonEvent>
             <activePinFriendlyName>SYS_CTRL</activePinFriendlyName>
             <timeout_ms>1000</timeout_ms>
-        </message>
-
-        <message>
-            <messageName>APP_VA_BUTTON_DOUBLE_CLICK</messageName>
-            <buttonEvent>DOUBLE_CLICK</buttonEvent>
-            <activePinFriendlyName>SYS_CTRL</activePinFriendlyName>
         </message>
 
         <message>

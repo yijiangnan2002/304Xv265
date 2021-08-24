@@ -33,6 +33,10 @@ import glob
 from workspace_parse.workspace import Workspace
 from workspace_parse.project import Project
 
+import sys
+reload(sys)
+sys.setdefaultencoding('gbk')
+
 try:
     import Tkinter as Tki  # Python 2.x
 except ImportError:
