@@ -151,6 +151,17 @@ const ui_event_indicator_table_t earbud_ui_leds_table[] =
                                                           .led.priority = LED_PRI_MEDIUM,
                                                           .led.local_only = TRUE}},
 #endif
+/*
+    {.sys_event=MESSAGE_BATTERY_LEVEL_LOW,                               { .led.action = LED_START_PATTERN,
+                                                          .led.data.pattern = app_led_pattern_batt_low,
+                                                          .led.priority = LED_PRI_LOW},
+                                                          .await_indication_completion = TRUE },
+
+*/
+    {.sys_event=TELEPHONY_ERROR,                        { .led.action = LED_START_PATTERN,
+                                                          .led.data.pattern = app_led_pattern_error,
+                                                          .led.priority = LED_PRI_EVENT}},
+
 #ifndef HAVE_RDP_UI_V2
     {.sys_event=AUDIO_CURATION_ANC_ON,                         { .led.action = LED_START_PATTERN,
                                                               .led.data.pattern = app_led_pattern_anc_on,

@@ -43,6 +43,7 @@ static soc_ctx_t soc_ctx;
 
 soc_data_t app_battery_charge;
 
+uint8 lowbatt_toneflag=0;
 /* TRUE if the current value is less than the threshold taking into account hysteresis */
 static bool soc_ltThreshold(uint16 current, uint16 threshold, uint16 hysteresis)
 {
@@ -118,12 +119,17 @@ static void soc_StateOfChargeUpdate(soc_data_t *battery_charge_state, uint16 bat
 {
     uint32 prev_index, index;
     uint16 prev_mv, this_mv;
-
+	if (battery_voltage < appConfigBatteryVoltageLow()&&lowbatt_toneflag==0)
+	{
+	// low batt prompt  per 
+	lowbatt_toneflag=1;
+	
+	//MessageSendLater(soc_data.task, MESSAGE_BATTERY_LEVEL_LOW, NULL,100*100);
+	}
     if (battery_voltage < appConfigBatteryVoltageCritical())
         battery_voltage = appConfigBatteryVoltageCritical();
     else if (battery_voltage > appConfigBatteryFullyCharged())
         battery_voltage = appConfigBatteryFullyCharged();
-
     prev_index = battery_charge_state->config_index;
     prev_mv = soc_ctx.soc_config_table[prev_index].voltage;
 
@@ -194,6 +200,13 @@ static void soc_HandleMessage(Task task, MessageId id, Message message)
         case CHARGER_MESSAGE_DETACHED:
             soc_data->charger_connected = FALSE;
             DEBUG_LOG("soc_HandleMessage, charger detached message received.");
+            break;
+
+
+        case MESSAGE_BATTERY_LEVEL_LOW:  // harry 0825 141414141414 
+            lowbatt_toneflag=0;
+            //appKymeraTonePlay(dut_mode_tone, 0, TRUE, NULL, 0);
+            DEBUG_LOG("soc_HandleMessage,MESSAGE_BATTERY_LEVEL_LOW tone");
             break;
 
         default:            

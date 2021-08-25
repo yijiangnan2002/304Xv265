@@ -31,7 +31,7 @@ const ui_event_indicator_table_t earbud_ui_prompts_table[] =
                                           .prompt.interruptible = FALSE,
                                           .prompt.queueable = TRUE,
                                           .prompt.requires_repeat_delay = TRUE }},
-    {.sys_event=PAIRING_COMPLETE,       { .prompt.filename = "pairing_successful.sbc",
+    {.sys_event=PAIRING_COMPLETE,       { .prompt.filename = "pairing_successful.sbc",     // harry 0825 3333333
                                           .prompt.rate = 48000,
                                           .prompt.format = PROMPT_FORMAT_SBC,
                                           .prompt.interruptible = FALSE,

@@ -22,7 +22,6 @@ enum battery_messages
     MESSAGE_BATTERY_INIT_CFM = BATTERY_APP_MESSAGE_BASE,
     /*! Message signalling the battery voltage has changed. */
     MESSAGE_BATTERY_LEVEL_UPDATE_VOLTAGE,
-
     /*! This must be the final message */
     BATTERY_APP_MESSAGE_END
 };

@@ -152,12 +152,12 @@ static void logicalInputSwitch_HandleMessage(Task task, MessageId id, Message me
 
 		 if(id == APP_MFB_BUTTON_TRIPLE_CLICK&& passthrough_ui_input == ui_input_invalid&&Multidevice_IsLeft())
 		 {
-		    id = APP_MFB_BUTTON_LEFT_TRIPLE_CLICK;
+		    id = APP_MFB_BUTTON_LEFT_TRIPLE_CLICK;  // //harry 0825 11111111111111
 		 }
 
 		 if(id == APP_MFB_BUTTON_DOUBLE_CLICK&& passthrough_ui_input == ui_input_invalid&&Multidevice_IsLeft())
 		 {
-		    id = APP_MFB_BUTTON_LEFT_DOUBLE_CLICK;
+		    id = APP_MFB_BUTTON_LEFT_DOUBLE_CLICK;  //harry 0825 131313131313
 		 }
 
             if (reroute_logical_inputs_to_peer &&

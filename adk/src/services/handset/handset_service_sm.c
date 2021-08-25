@@ -311,7 +311,7 @@ static void handsetServiceSm_EnterDisconnected(handset_service_state_machine_t *
            established the connection with the device (i.e. if not yet completed profile connection). */
         if (handsetServiceSm_PriorConnectionWasCompleted(sm, old_state))
         {
-            HandsetService_SendDisconnectedIndNotification(&addr, handset_service_status_disconnected);
+            HandsetService_SendDisconnectedIndNotification(&addr, handset_service_status_disconnected);    //harry 0825 6666666
         }
     }
     /* clear the connection status flag after sending the disconnected indication. */

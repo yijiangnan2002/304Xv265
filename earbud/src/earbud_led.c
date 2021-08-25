@@ -170,6 +170,17 @@ const led_pattern_t app_led_pattern_charging_low[] =
     LED_REPEAT(0, 0),
 };
 
+const led_pattern_t app_led_pattern_batt_low[] =
+{
+    LED_LOCK,
+    LED_ON(LED_WHITE),
+    LED_WAIT(500),
+    LED_OFF(LED_WHITE),
+    LED_WAIT(500),
+    LED_UNLOCK,
+    LED_REPEAT(0, 0),
+};
+
 const led_pattern_t app_led_pattern_charging_ok[] =
 {
     LED_LOCK,
@@ -184,7 +195,7 @@ const led_pattern_t app_led_pattern_charging_ok[] =
 const led_pattern_t app_led_pattern_power_on[] =
 {
     LED_LOCK,
-    LED_ON(LED_WHITE),    LED_WAIT(100),LED_OFF(LED_WHITE),
+    LED_ON(LED_WHITE),    LED_WAIT(100),LED_OFF(LED_WHITE),    // harry 0825 11111111111
     LED_ON(LED_GREEN),    LED_WAIT(100),LED_OFF(LED_GREEN),
     LED_ON(LED_WHITE),    LED_WAIT(100),LED_OFF(LED_WHITE),
     LED_ON(LED_GREEN),    LED_WAIT(100),LED_OFF(LED_GREEN),
@@ -235,7 +246,7 @@ const led_pattern_t app_led_pattern_pairing[] =
     LED_ON(LED_BLUE), LED_WAIT(100), LED_OFF(LED_BLUE), LED_WAIT(100),
 #else
     LED_ON(LED_WHITE),    LED_WAIT(100),LED_OFF(LED_WHITE),
-    LED_ON(LED_GREEN),    LED_WAIT(100),LED_OFF(LED_GREEN),
+    LED_ON(LED_GREEN),    LED_WAIT(100),LED_OFF(LED_GREEN),LED_WAIT(100),   // harry 0825 11111111111
 #endif
     LED_UNLOCK,
     LED_REPEAT(0, 0)
@@ -256,7 +267,7 @@ const led_pattern_t app_led_pattern_peer_pairing[] =
 #ifdef HAVE_RDP_UI
     LED_ON(LED_RED), LED_WAIT(50), LED_OFF(LED_RED), LED_WAIT(50),
 #else
-    LED_ON(LED_BLUE), LED_WAIT(50), LED_OFF(LED_BLUE), LED_WAIT(50),
+    LED_ON(LED_BLUE), LED_WAIT(50), LED_OFF(LED_BLUE), LED_WAIT(50),  
 #endif
     LED_UNLOCK,
     LED_REPEAT(0, 0)

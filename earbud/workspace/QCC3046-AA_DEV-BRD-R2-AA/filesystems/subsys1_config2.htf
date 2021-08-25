@@ -3,5 +3,5 @@ file=bt2
 # 6 Byte Bluetooth Device address, as specified in part B, section 13.1 of the Bluetooth Core Specification.
 # MSB in byte 5.
 #                 LSB             MSB
-#BD_ADDRESS=[00 ff 00 5C 02 00]
-BD_ADDRESS=[01 ff 00 5C 02 00]
+BD_ADDRESS=[00 ff 00 5C 02 00]
+#BD_ADDRESS=[01 ff 00 5C 02 00]

@@ -18,6 +18,7 @@ enum soc_messages
 {
     /*! Message signalling the battery state of charge has changed. */
     SOC_UPDATE_IND = STATE_OF_CHARGE_MESSAGE_BASE,
+    MESSAGE_BATTERY_LEVEL_LOW,
     STATE_OF_CHARGE_MESSAGE_END
 };
 

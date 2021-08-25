@@ -344,15 +344,15 @@ const touch_event_config_t touch_event_table [] =
 const ui_config_table_content_t earbud_ui_config_table[] =
 {
 #if 1
-    {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_telephony,       context_voice_in_call,                ui_input_voice_call_hang_up                   },
-    {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_telephony,       context_voice_ringing_outgoing,       ui_input_voice_call_hang_up                   },
-    {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_telephony,       context_voice_ringing_incoming,       ui_input_voice_call_accept                    },
-    {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_media_player,    context_media_player_streaming,       ui_input_toggle_play_pause                    },
+    {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_telephony,       context_voice_in_call,                ui_input_voice_call_hang_up                   },//harry 0825 99999999
+    {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_telephony,       context_voice_ringing_outgoing,       ui_input_voice_call_hang_up                   }, //harry 0825 99999999
+    {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_telephony,       context_voice_ringing_incoming,       ui_input_voice_call_accept                    },	//harry 0825 888888
+    {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_media_player,    context_media_player_streaming,       ui_input_toggle_play_pause                    },   //harry 0825 77777777
     {APP_MFB_BUTTON_DOUBLE_CLICK,      ui_provider_media_player,    context_media_player_idle,            ui_input_toggle_play_pause                    },
-    {APP_MFB_BUTTON_LEFT_DOUBLE_CLICK,      ui_provider_media_player,    context_media_player_idle,            ui_input_toggle_play_pause                    },
-    {APP_MFB_BUTTON_HELD_1SEC,      ui_provider_telephony,       context_voice_ringing_incoming,       ui_input_voice_call_reject                    },
-    {APP_MFB_BUTTON_TRIPLE_CLICK,              ui_provider_media_player,    context_media_player_streaming,       ui_input_av_forward                           },
-    {APP_MFB_BUTTON_LEFT_TRIPLE_CLICK,              ui_provider_media_player,    context_media_player_streaming,       ui_input_av_backward                           },
+    {APP_MFB_BUTTON_LEFT_DOUBLE_CLICK,      ui_provider_telephony,    context_voice_connected,            ui_input_voice_dial                    },  //harry 0825 131313131313
+    {APP_MFB_BUTTON_HELD_1SEC,      ui_provider_telephony,       context_voice_ringing_incoming,       ui_input_voice_call_reject                    },	//harry 0825 101010101010
+    {APP_MFB_BUTTON_TRIPLE_CLICK,              ui_provider_media_player,    context_media_player_streaming,       ui_input_av_forward                           },  //harry 0825 1212121212
+    {APP_MFB_BUTTON_LEFT_TRIPLE_CLICK,              ui_provider_media_player,    context_media_player_streaming,       ui_input_av_backward                           },//harry 0825 1111111111
 
 #else
     {APP_LEAKTHROUGH_TOGGLE_ON_OFF,    ui_provider_audio_curation,  context_leakthrough_disabled,         ui_input_leakthrough_toggle_on_off            },
