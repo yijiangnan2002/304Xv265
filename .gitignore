@@ -649,5 +649,6 @@ earbud/workspace/QCC3046-AA_DEV-BRD-R2-AA
 adk/src/libs/libs_qcc514x_qcc304x.x2p.bak
 audio/qcc514x_qcc304x/kalimba/kymera/build/kymera_audio.x2p.bak
 os/qcc514x_qcc304x/hydra_os/src/fw/src/os.x2p.bak
+adk/tools/packages/codegen/__pycache__/
 
 

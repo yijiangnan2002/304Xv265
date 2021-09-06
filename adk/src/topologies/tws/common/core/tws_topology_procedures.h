@@ -44,7 +44,7 @@ typedef enum
     tws_topology_procedure_pri_connect_peer_profiles,
 
     /*! Procedure to connect BREDR profiles to Earbud. */
-    tws_topology_procedure_disconnect_peer_profiles,
+    tws_topology_procedure_disconnect_peer_profiles,		//5
 
     /*! Procedure to enable page scan for Secondary to establish BREDR ACL to Primary Earbud. */
     tws_topology_procedure_enable_connectable_peer,
@@ -54,7 +54,7 @@ typedef enum
 
     tws_topology_procedure_connect_handset,
 
-    tws_topology_procedure_disconnect_handset,
+    tws_topology_procedure_disconnect_handset,		//10
 
     tws_topology_procedure_enable_connectable_handset,
 
@@ -62,13 +62,13 @@ typedef enum
     tws_topology_procedure_set_address,
 
     tws_topology_procedure_become_primary,
-    tws_topology_procedure_become_secondary,
+    tws_topology_procedure_become_secondary,		// 15
     tws_topology_procedure_become_acting_primary,
     tws_topology_procedure_set_primary_address_and_find_role,
 
     tws_topology_procedure_role_switch_to_secondary,
     tws_topology_procedure_no_role_find_role,
-    tws_topology_procedure_cancel_find_role,
+    tws_topology_procedure_cancel_find_role,		//20
     tws_topology_procedure_primary_find_role,
 
     tws_topology_procedure_allow_connection_over_le,
@@ -76,7 +76,7 @@ typedef enum
 
     tws_topology_procedure_pair_peer_script,
 
-    tws_topology_procedure_dfu_primary,
+    tws_topology_procedure_dfu_primary,			//25
     tws_topology_procedure_dfu_secondary,
 
     tws_topology_procedure_allow_handset_connection,
@@ -87,14 +87,14 @@ typedef enum
 
     /*! Procedure to release the lock on ACL to the peer and 
         (potentially) start closing the connection */
-    tws_topology_procedure_release_peer,
+    tws_topology_procedure_release_peer,			//30
 
     tws_topology_procedure_command_role_switch,
     tws_topology_procedure_wait_peer_link_drop,
     tws_topology_procedure_secondary_static_handover,
     tws_topology_procedure_primary_static_handover_in_case,
 
-    tws_topology_procedure_primary_static_handover,
+    tws_topology_procedure_primary_static_handover,		//35
     /*! Procedure to abort DFU when handover kicks in. */
     tws_topology_procedure_dfu_abort_on_handover,
 
@@ -103,7 +103,7 @@ typedef enum
     tws_topology_procedure_dynamic_handover,
     tws_topology_procedure_dynamic_handover_failure,
 
-    tws_topology_procedure_enable_le_connectable_handset,
+    tws_topology_procedure_enable_le_connectable_handset,		//40
     tws_topology_procedure_disconnect_le_connections,
     tws_topology_procedure_notify_role_change_clients,
 
@@ -114,7 +114,7 @@ typedef enum
     tws_topology_procedure_send_message_to_topology,
 
     /*! Procedure to place the system into a safe state */
-    tws_topology_procedure_system_stop,
+    tws_topology_procedure_system_stop,		//45
 
     /*! Procedure that indicate a script to stop the system has started */
     tws_topology_procedure_start_stop_script,
@@ -126,7 +126,7 @@ typedef enum
     tws_topology_proc_stop_le_broadcast,
 
     /*! Procedure to disconnect LRU handset */
-    tws_topology_procedure_disconnect_lru_handset,
+    tws_topology_procedure_disconnect_lru_handset,  //49
 
 } tws_topology_procedure;
 

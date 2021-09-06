@@ -354,6 +354,11 @@ const ui_config_table_content_t earbud_ui_config_table[] =
     {APP_MFB_BUTTON_TRIPLE_CLICK,              ui_provider_media_player,    context_media_player_streaming,       ui_input_av_forward                           },  //harry 0825 1212121212
     {APP_MFB_BUTTON_LEFT_TRIPLE_CLICK,              ui_provider_media_player,    context_media_player_streaming,       ui_input_av_backward                           },//harry 0825 1111111111
 
+
+    {APP_PIO3_BUTTON_SINGLE_CLICK, ui_provider_phy_state,       context_phy_state_out_of_case,        ui_input_sm_pair_handset                      },
+    {APP_PIO3_BUTTON_DOUBLE_CLICK,      ui_provider_device,          context_handset_not_connected,        ui_input_connect_handset                      },
+    {APP_PIO3_BUTTON_TRIPLE_CLICK, ui_provider_phy_state,       context_phy_state_out_of_case,        ui_input_sm_delete_handsets                   },
+
 #else
     {APP_LEAKTHROUGH_TOGGLE_ON_OFF,    ui_provider_audio_curation,  context_leakthrough_disabled,         ui_input_leakthrough_toggle_on_off            },
     {APP_LEAKTHROUGH_TOGGLE_ON_OFF,    ui_provider_audio_curation,  context_leakthrough_enabled,          ui_input_leakthrough_toggle_on_off            },

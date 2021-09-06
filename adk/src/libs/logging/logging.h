@@ -308,7 +308,7 @@ extern void debugLogData(const uint8 *data, uint16 data_size);
  * the global log level \c debug_log_level__global or a module
  * level variable where it exists (see below).
  */
-#define DEFAULT_LOG_LEVEL           DEBUG_LOG_LEVEL_INFO
+#define DEFAULT_LOG_LEVEL           DEBUG_LOG_LEVEL_V_VERBOSE
 
 #define UNUSED0(a)                      (void)(a)
 #define UNUSED1(a,b)                    (void)(a),UNUSED0(b)

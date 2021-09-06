@@ -38,6 +38,25 @@
            <timeout_ms>9000</timeout_ms>
         </message>
 
+        <message>
+           <messageName>APP_PIO3_BUTTON_SINGLE_CLICK</messageName>
+           <buttonEvent>SINGLE_CLICK</buttonEvent>
+           <activePinFriendlyName>MFB</activePinFriendlyName>
+        </message>
+
+        <message>
+           <messageName>APP_PIO3_BUTTON_DOUBLE_CLICK</messageName>
+           <buttonEvent>DOUBLE_CLICK</buttonEvent>
+           <activePinFriendlyName>MFB</activePinFriendlyName>
+        </message>
+
+        <message>
+           <messageName>APP_PIO3_BUTTON_TRIPLE_CLICK</messageName>
+           <buttonEvent>MULTI_CLICK</buttonEvent>
+           <activePinFriendlyName>MFB</activePinFriendlyName>
+           <count>3</count>
+        </message>
+
        <message>
             <messageName>APP_ANC_TOGGLE_ON_OFF</messageName>
             <buttonEvent>HELD_RELEASE</buttonEvent>

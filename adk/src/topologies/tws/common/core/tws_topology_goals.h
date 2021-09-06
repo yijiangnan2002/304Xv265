@@ -16,7 +16,7 @@
 /*! Definition of goals which the topology may be instructed (by rules) to achieve. */
 typedef enum
 {
-    /*! Empty goal. */
+    /*!0 Empty goal. */
     tws_topology_goal_none,
 
     /*! Goal is to pair with a peer Earbud. */
@@ -31,7 +31,7 @@ typedef enum
     /*! Goal is to connect peer BREDR profiles to Secondary. */
     tws_topology_goal_primary_connect_peer_profiles,
 
-    /*! Goal is to disconnect peer BREDR profiles to Secondary. */
+    /*!5 Goal is to disconnect peer BREDR profiles to Secondary. */
     tws_topology_goal_primary_disconnect_peer_profiles,
 
     /*! Goal is to enable page scan on Primary for Secondary to connect BREDR ACL. */
@@ -47,7 +47,7 @@ typedef enum
     /*! Goal is to connect to a handset. */
     tws_topology_goal_connect_handset,
 
-    /*! Goal is to disconnect from a handset. */
+    /*!10 Goal is to disconnect from a handset. */
     tws_topology_goal_disconnect_handset,
 
     /*! Goal is to enable pagescan to enable handset connectivity. */
@@ -62,7 +62,7 @@ typedef enum
     /*! Goal is to take on the Acting Primary role. */
     tws_topology_goal_become_acting_primary,
 
-    /*! Goal is to set a specific BT address. */
+    /*!15 Goal is to set a specific BT address. */
     tws_topology_goal_set_address,
 
     /*! Goal is to set the primary address and start role selection. */
@@ -80,7 +80,7 @@ typedef enum
     /*! Goal is to cancel an active role selection process. */
     tws_topology_goal_cancel_find_role,
 
-    /*! Goal is to start continuous role selection (low duty cycle)
+    /*!20 Goal is to start continuous role selection (low duty cycle)
         whilst in the Primary role. Typically used in failure cases
         where the Secondary has been lost, or Earbud is an acting
         Primary. */
@@ -102,7 +102,7 @@ typedef enum
     /*! Goal for Primary to participate in a static handover when going in the case */ 
     tws_topology_goal_primary_static_handover_in_case,
 
-    /*! Goal for Primary to participate in a static handover staying out of the case */
+    /*!25 Goal for Primary to participate in a static handover staying out of the case */
     tws_topology_goal_primary_static_handover,
 
     /*! Goal to handle the handover recommendation from HDMA  */
@@ -117,7 +117,7 @@ typedef enum
     /*! Goal to allow or disallow handset connections */
     tws_topology_goal_allow_handset_connect,
 
-    /*! Goal to discard current role, disconnect links and cancel any
+    /*! 30 Goal to discard current role, disconnect links and cancel any
         activity. Typically used before system shutdown. */
     tws_topology_goal_system_stop,
 

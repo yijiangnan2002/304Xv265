@@ -48,13 +48,13 @@ const led_manager_hw_config_t earbud_led_config =
 #define LED_GREEN   (LED_0_STATE)
 #ifdef CORVUS_YD300
 #define LED_BLUE    (LED_2_STATE)
-#define LED_RED     (LED_0_STATE)
+#define LED_RED     (LED_2_STATE)
 #else
 #define LED_BLUE    (LED_1_STATE)
-#define LED_RED     LED_BLUE
+#define LED_RED     (LED_2_STATE)
 #endif
 
-#define LED_WHITE   LED_BLUE
+#define LED_WHITE   LED_RED
 #define LED_YELLOW  LED_WHITE
 
 //#define LED_WHITE   (LED_0_STATE | LED_1_STATE | LED_2_STATE)

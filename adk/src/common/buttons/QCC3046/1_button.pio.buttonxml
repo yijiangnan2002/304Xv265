@@ -16,7 +16,7 @@
 
     <pio>
         <pinFriendlyName>MFB</pinFriendlyName>
-        <pad>2</pad>
+        <pad>3</pad>
     </pio>
 
 </pio_map>

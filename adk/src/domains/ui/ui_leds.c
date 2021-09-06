@@ -149,6 +149,7 @@ static void uiLeds_DoFlashIndication(uint16 led_index)
 
 static void uiLeds_DoContextFlashIndication(uint16 context_index, ui_providers_t provider)
 {
+	DEBUG_LOG_INFO("uiLeds_DoContextFlashIndication");
     uiLeds_DoFlashIndication(context_index);
 
     the_leds.curr_indicated_context_index = context_index;
@@ -250,9 +251,11 @@ static void uiLeds_HandleMessage(Task task, MessageId id, Message message)
     if (id == UI_PROVIDER_CONTEXT_UPDATED)
     {
         uiLeds_DoContextUpdate((UI_PROVIDER_CONTEXT_UPDATED_T *)message);
+	DEBUG_LOG_INFO("uiLeds_HandleMessage id == UI_PROVIDER_CONTEXT_UPDATED");
     }
     if (uiLeds_GetLedIndexFromMappingTable(id, &led_index))
     {
+	//DEBUG_LOG("uiLeds_HandleMessage id == %ld,led_index=%ld ",id,led_index);
         uiLeds_DoFlashIndication(led_index);
     }
     else if (id == UI_INTERNAL_LED_FLASH_COMPLETED)
