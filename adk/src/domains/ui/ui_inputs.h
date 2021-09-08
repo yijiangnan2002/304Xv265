@@ -12,6 +12,7 @@
 #define _UI_INPUTS_H_
 
 #include "domain_message.h"
+#include "battery_region.h"
 
 #define FOREACH_UI_INPUT(UI_INPUT) \
     UI_INPUT(ui_input_voice_call_hang_up = UI_INPUTS_TELEPHONY_MESSAGE_BASE)   \
@@ -137,6 +138,9 @@ typedef enum
     ui_provider_peer_pairing,
     ui_provider_handset_pairing,
     ui_provider_charger,
+    #ifdef LOW_BATTERY_CUSTOM_UI
+    ui_provider_battery_state,
+    #endif
     ui_providers_max
 } ui_providers_t;
 

@@ -24,6 +24,7 @@
 #include <telephony_messages.h>
 #include <audio_curation.h>
 #include <voice_sources.h>
+#include "battery_region.h"
 
 /*! \ingroup configuration
 
@@ -92,6 +93,12 @@ const ui_provider_context_consumer_indicator_table_t earbud_ui_leds_context_indi
      .context=context_app_sm_in_ear,                    { .led.action = LED_STOP_PATTERN,
                                                           .led.data.pattern = NULL,
                                                           .led.priority = LED_PRI_LOW}},
+#ifdef LOW_BATTERY_CUSTOM_UI
+    {.provider=ui_provider_battery_state,
+     .context=battery_region_ok,                    { .led.action = LED_START_PATTERN,
+                                                          .led.data.pattern = app_led_pattern_anc_on,
+                                                          .led.priority = LED_PRI_LOW}},
+#endif
 };
 
 /*! \ingroup configuration

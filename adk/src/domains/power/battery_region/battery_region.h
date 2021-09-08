@@ -11,7 +11,19 @@
 
 #include "domain_message.h"
 #include <marshal.h>
+#define LOW_BATTERY_CUSTOM_UI
+#if 0//def LOW_BATTERY_CUSTOM_UI
 
+typedef enum
+{
+    context_battery_unknow,
+    context_battery_normal,
+    context_battery_critical,
+    context_battery_safety
+
+} battery_region_provider_context_t;
+
+#endif
 /*! Operating region classification based on battery voltage */
 typedef enum
 {    
@@ -30,12 +42,16 @@ enum battery_region_messages
     MESSAGE_BATTERY_REGION_INIT_CFM = BATTERY_REGION_MESSAGE_BASE,
      /*! Message signalling the battery state has changed. */
     MESSAGE_BATTERY_REGION_UPDATE,
-
     /*! This must be the final message */
     MESSAGE_BATTERY_REGION_MESSAGE_END
 };
 ASSERT_MESSAGE_GROUP_NOT_OVERFLOWED(BATTERY_REGION, MESSAGE_BATTERY_REGION_MESSAGE_END)
+#ifdef non_fun
+void non_func()
+{
 
+}
+#endif
 /*! battery states */
 typedef enum
 {

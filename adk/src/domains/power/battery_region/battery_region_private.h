@@ -32,6 +32,9 @@ typedef struct
     uint8 region_table_len;
     uint8 region;
     battery_region_state_t state;
+#if 0//def LOW_BATTERY_CUSTOM_UI
+    bool lowbattui_active;
+#endif
 } battery_region_data_t;
 
 /*! \brief Battery component task data. */

@@ -21,6 +21,7 @@ DEBUG_LOG_DEFINE_LEVEL_VAR
 #include "hydra_macros.h"
 #include "panic.h"
 #include "unexpected_message.h"
+#include "earbud_tones.h"
 
 /* Make the type used for message IDs available in debug tools */
 LOGGING_PRESERVE_MESSAGE_ENUM(battery_region_messages)
@@ -50,6 +51,9 @@ enum battery_region_internal_messages
     /*! Message sent to start charging timer when entering an battery operating region */
     MESSAGE_BATTERY_REGION_INTERNAL_CHARGING_TIMER = INTERNAL_MESSAGE_BASE,
     MESSAGE_BATTERY_REGION_INTERNAL_UPDATE_TRIGGER,
+    #ifdef LOW_BATTERY_CUSTOM_UI
+    MESSAGE_BATTERY_INTERNAL_STATUS_UPDATE,
+    #endif
 
     /*! This must be the final message */
     MESSAGE_BATTERY_REGION_INTERNAL_MESSAGE_END
@@ -135,6 +139,18 @@ static bool batteryRegion_VolTempInRegion(battery_region_data_t *battery_region,
     return (volatage_in_region && temp_in_region);
 }
 
+#if 0//def LOW_BATTERY_CUSTOM_UI
+static void batteryRegion_UpdateBatteryStatus(battery_region_data_t *battery_region)
+{
+	if(battery_region->state==battery_region_ok&&battery_region->lowbattui_active==0)
+	{
+		DEBUG_LOG_INFO("batteryRegion_UpdateBatteryStatus");
+		battery_region->lowbattui_active=1;
+		MessageCancelAll(&battery_region->task, MESSAGE_BATTERY_INTERNAL_STATUS_UPDATE);
+		MessageSendLater(&battery_region->task, MESSAGE_BATTERY_INTERNAL_STATUS_UPDATE, 0,D_MIN(1));
+	}
+}
+#endif
 /*! 
     \brief Determine if there has been battery region change and take appropriate actions based on that.
     \param battery_region pointer to battery_region_data_t structure.
@@ -215,6 +231,17 @@ static void batteryRegion_UpdateRegion(battery_region_data_t *battery_region)
             {
                 battery_region->state = battery_region_ok;
             }
+            	#ifdef LOW_BATTERY_CUSTOM_UI
+    		if ((!is_connected)&&battery_region->state == battery_region_ok)
+		{
+		MessageSend(&battery_region->task, MESSAGE_BATTERY_INTERNAL_STATUS_UPDATE, 0);
+		}
+		else
+		{
+		MessageCancelAll(&battery_region->task, MESSAGE_BATTERY_INTERNAL_STATUS_UPDATE);
+		}
+	//	batteryRegion_UpdateBatteryStatus(battery_region);
+		#endif
             Charger_UpdateCurrent();
 
             if (new_region->current != 0 &&
@@ -237,7 +264,6 @@ static void batteryRegion_UpdateRegion(battery_region_data_t *battery_region)
             {
                 region_ctx.handler_funcs->safety_handler(prev_region, battery_region->region);
             }
-            
             batteryRegion_ServiceClients(battery_region);
             return;
         }
@@ -275,7 +301,14 @@ static void batteryRegion_HandleMessage(Task task, MessageId id, Message message
             batteryRegion_UpdateRegion(battery_region);
             batteryRegion_ScheduleNextRegionUpdate(battery_region, battery_region->period);
             break;
-
+	#ifdef LOW_BATTERY_CUSTOM_UI
+        case MESSAGE_BATTERY_INTERNAL_STATUS_UPDATE:
+		DEBUG_LOG_INFO("batteryRegion_HandleMessage lowbattui_active=0");
+		appKymeraTonePlay(app_tone_button, 0, TRUE, NULL, 0);
+		Ui_InformContextChange(ui_provider_battery_state, battery_region->state);
+		MessageSendLater(&battery_region->task, MESSAGE_BATTERY_INTERNAL_STATUS_UPDATE, 0,D_SEC(20));
+            break;
+	#endif
         case CHARGER_MESSAGE_DETACHED:
             /* stop running charging timer */
             (void) MessageCancelAll(&battery_region->task, 
@@ -297,7 +330,34 @@ static Task batteryRegion_GetTask(void)
 {
     return &app_battery_region.task;
 }
+#ifdef LOW_BATTERY_CUSTOM_UI
+static unsigned batteryRegion_GetCurrentContext(void)
+{
+    battery_region_data_t *battery_region = GetBatteryRegionData();
+    return battery_region->state;
+    #if 0
+    battery_region_provider_context_t context;
+	switch(app_battery_region.state)
+    {
+    case battery_region_unsafe:
+        context = context_power_on;
+        break;
+    case battery_region_critical:
+        context = context_powering_off;
+        break;
+    case battery_region_ok:
+        context = context_entering_sleep;
+        break;
+		
+    default:
+        break;
+    }
+	context=app_battery_region.state;
+    return (unsigned)context;
+	#endif
 
+}
+#endif
 void BatteryRegion_Init(void)
 {
     DEBUG_LOG("BatteryRegion_Init");
@@ -312,6 +372,9 @@ void BatteryRegion_Init(void)
     /* these need to be set from headset or earbud init. temporarily in config file. */
     battery_region->period = batteryRegion_GetReadingPeriodMs();
     battery_region->region = BATTERY_REGION_UNDEFINED;
+#ifdef LOW_BATTERY_CUSTOM_UI
+    Ui_RegisterUiProvider(ui_provider_battery_state, batteryRegion_GetCurrentContext);
+#endif
 
     Charger_ClientRegister(batteryRegion_GetTask());
 

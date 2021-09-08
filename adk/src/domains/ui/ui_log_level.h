@@ -12,7 +12,7 @@
 /* To enable UI module logging change the UI_USE_LOG_LEVELS to 1
  and include this header file before including any header file(s)
  into C files such as ui_prompts.c, ui_tones.c and etc. of UI module.*/
-#define UI_USE_LOG_LEVELS 0
+#define UI_USE_LOG_LEVELS 1
 
 #if UI_USE_LOG_LEVELS
 #define DEBUG_LOG_MODULE_NAME ui

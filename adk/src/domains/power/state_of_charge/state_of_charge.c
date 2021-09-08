@@ -114,7 +114,6 @@ static void soc_ClientRemove(soc_data_t *battery_charge, Task task)
         }
     }
 }
-
 static void soc_StateOfChargeUpdate(soc_data_t *battery_charge_state, uint16 battery_voltage)
 {
     uint32 prev_index, index;
